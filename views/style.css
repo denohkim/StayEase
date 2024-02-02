@@ -109,7 +109,9 @@
 }
 
 body {
-  background: url(images/MacBook\ Air\ -\ 11.png);
+  background-image: url(images/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
   overflow-x: hidden;
 }
 

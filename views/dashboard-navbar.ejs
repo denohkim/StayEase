@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg shadow">
   <div class="container-fluid">
-    <a class="navbar-brand" href="/" style="margin-left: 30px; font-size: 15px">
-      Dashboard
+    <a class="navbar-brand" href="/admin-dashboard" style="margin-left: 30px; font-size: 18px">
+      <%= user.role.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') %> Dashboard
     </a>
     <div class="d-flex align-items-center">
       <i class="fas fa-user profile-icon"></i>
-      <span>Eric</span>
+      <span> <%= user.fname %></span>
     </div>
   </div>
 </nav>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Administrator</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Main Navbar -->
+  <%- include ('dashboard-navbar.ejs') %>
+
+    <!-- <%- include ('side-nav.ejs')%> -->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3">
+          <!-- Empty column for side nav -->
+          <%- include ('admin-side-nav.ejs')%>
+        </div>
+
+        <div class="col-sm-9">
+          <div class="container">
+            <div class="row me-5 ms-5 mb-5 mt-5">
+              <div class="col">
+                <div class="card tile">
+                  <div class="card-body">
+                    <table>
+                      <tr>
+                        <td>
+                          <p style="font-size: 48px; color: #1abc9c">5</p>
+                        </td>
+                        <td style="text-align: right">
+                          <i class="fas fa-user-graduate" style="font-size: 48px; color: #1abc9c"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Number of Students</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card tile">
+                  <div class="card-body">
+                    <table>
+                      <tr>
+                        <td>
+                          <p style="font-size: 48px; color: #1abc9c">5</p>
+                        </td>
+                        <td style="text-align: right">
+                          <i class="fas fa-bed" style="font-size: 48px; color: #1abc9c"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="me-4">Booked Rooms</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="card tile">
+                  <div class="card-body">
+                    <table>
+                      <tr>
+                        <td>
+                          <p style="font-size: 48px; color: #1abc9c">5</p>
+                        </td>
+                        <td style="text-align: right">
+                          <i class="fas fa-wrench" style="font-size: 48px; color: #1abc9c"></i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p>Maintenance Requests</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row me-5 ms-5">
+              <div class="col-sm-8">
+                <div class="card card-standard-height">
+                  <div class="card-header d-flex justify-content-between"><span>Notice Board</span> <span><i
+                        class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addNoticeModal"></i></span></div>
+                  <div class="card-body">
+                    <ol>
+                      <li class="mb-2">
+                        Room Allocation for Semester 2, 2024:Dear Students, the
+                        room allocation for the upcoming semester has been
+                        completed... more
+                      </li>
+                      <li class="mb-2">
+                        Maintenance Schedule - January 2024::Dear Students, the
+                        room allocation for the upcoming semester has been
+                        completed... more
+                      </li>
+                      <li class="mb-2">
+                        Upcoming Check-In Dates:Dear Students, the room
+                        allocation for the upcoming semester has been
+                        completed... more
+                      </li>
+                      <li class="mb-2">
+                        Room Allocation for Semester 2, 2024:Dear Students, the
+                        room allocation for the upcoming semester has been
+                        completed... more
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="card card-standard-height">
+                  <div class="card-header d-flex justify-content-between"><span>Events</span> <span><i
+                        class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addEventModal"></i></span></div>
+                  <div class="card-body">
+                    <ol>
+                      <li class="mb-2">
+                        Upcoming Check-In Dates:
+                        <div class="date">31 January 2024</div>
+                      </li>
+                      <li class="mb-2">
+                        Maintenance Schedule:
+                        <div class="date">31 January 2024</div>
+                      </li>
+                      <li class="mb-2">
+                        Games and hangout:
+                        <div class="date">31 January 2024</div>
+                      </li>
+                      <li class="mb-2">
+                        Safety Training:
+                        <div class="date">31 January 2024</div>
+                      </li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="addNoticeModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 " id="staticBackdropLabel">Create Notice</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/post-notice" method="POST">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+              </div>
+              <div class="mb-3">
+                <label for="content" class="form-label">Content</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+              </div>
+              <div class="text-end">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary primary-button">Post Notice</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="addEventModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+      aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 " id="staticBackdropLabel">Create Event</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/post-event" method="POST">
+              <div class="mb-3">
+                <label for="eventName" class="form-label">Event Name</label>
+                <input type="text" class="form-control" id="eventName" name="eventName" required>
+              </div>
+              <div class="mb-3">
+                <label for="eventDate" class="form-label">Event Date</label>
+                <input type="date" class="form-control" id="eventDate" name="eventDate" required>
+              </div>
+              <div class="mb-3">
+                <label for="eventDescription" class="form-label">Event Description</label>
+                <textarea class="form-control" id="eventDescription" name="eventDescription" rows="5"
+                  required></textarea>
+              </div>
+              <div class="text-end">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary primary-button">Post Event</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Font Awesome JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+
+</html>

@@ -21,7 +21,8 @@
     "mongoose": "^8.1.1",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "pdfkit": "^0.14.0"
+    "pdfkit": "^0.14.0",
+    "stripe": "^14.15.0"
   },
   "devDependencies": {
     "nodemon": "^3.0.3"

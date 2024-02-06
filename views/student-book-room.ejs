@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administrator</title>
+  <title>Student</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="/style.css" />
@@ -26,120 +26,126 @@
 
         <div class="col-sm-9">
           <div class="container">
-            <div class="row me-5 ms-5 mb-5 mt-5">
-              <div class="col-sm-4">
-                <div class="card tile">
-                  <div class="card-body">
-                    <div class="row mb-2">
-                      <div class="col-md-8 card-number">
-                        <%= numHostels %>
-                      </div>
-                      <div class="col-md-4 card-icon">
-                        <i class="far fa-building card-icon"></i>
+            <% if (messages.error_msg) { %>
+              <div class="alert alert-danger">
+                <%= messages.error_msg %>
+              </div>
+              <% } %>
+                <div class="row me-5 ms-5 mb-5 mt-5">
+                  <div class="col-sm-4">
+                    <div class="card tile">
+                      <div class="card-body">
+                        <div class="row mb-2">
+                          <div class="col-md-8 card-number">
+                            <%= numHostels %>
+                          </div>
+                          <div class="col-md-4 card-icon">
+                            <i class="far fa-building card-icon"></i>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-10">Available Hostels</div>
+                        </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-10">Available Hostels</div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="card tile">
+                      <div class="card-body">
+                        <div class="row mb-2">
+                          <div class="col-md-8 card-number">
+                            <%= numRooms %>
+                          </div>
+                          <div class="col-md-4 card-icon">
+                            <i class="fas fa-bed card-icon"></i>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-10">Available Rooms</div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card tile">
-                  <div class="card-body">
-                    <div class="row mb-2">
-                      <div class="col-md-8 card-number">
-                        <%= numRooms %>
+                <form action="" class="row me-5 ms-5 mb-1 mt-5 justify-content-between">
+                  <div class="col-md-4">
+                    <select id="hostelId" name="hostelId" class="form-select" required>
+                      <option value="">Select Hostel</option>
+                      <% hostels.forEach(hostel=> { %>
+                        <option value="<%= hostel._id %>">
+                          <%= hostel.hostelName %>
+                        </option>
+                        <% }); %>
+                    </select>
+
+                  </div>
+                  <div class="col-md-4">
+                    <select class="form-select" id="exampleSelect">
+                      <option value="1">Room</option>
+                      <option value="2">Single</option>
+                      <option value="2">Studio</option>
+
+                    </select>
+                  </div>
+                  <div class="col-md-2">
+                    <button type="button" class="btn primary-button">Search</button>
+                  </div>
+                </form>
+
+                <div class="row me-5 ms-5">
+                  <div class="col-sm-12">
+                    <div class="card card-standard-height">
+                      <div class="card-header d-flex justify-content-between">
+                        <span>Rooms</span>
+                        <span><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addRoomModal"></i></span>
                       </div>
-                      <div class="col-md-4 card-icon">
-                        <i class="fas fa-bed card-icon"></i>
+                      <div class="card-body">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">S.No</th>
+                              <th scope="col">Room No.</th>
+                              <th scope="col">Category</th>
+                              <th scope="col">Hostel</th>
+                              <th scope="col">Floor</th>
+                              <th scope="col">Price</th>
+                              <th scope="col">Actions</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% rooms.forEach((room, index)=> { %>
+                              <tr>
+                                <th scope="row">
+                                  <%= index + 1 %>
+                                </th>
+                                <td>
+                                  <%= room.roomNumber %>
+                                </td>
+                                <td>
+                                  <%= room.type %>
+                                </td>
+                                <td>
+                                  <%= room.hostelId.hostelName %>
+                                </td>
+                                <td>
+                                  <%= room.floor %>
+                                </td>
+                                <td>$ <%= room.price %>
+                                </td>
+                                <td>
+                                  <button type="button" class="btn adaptive-button" class="me-3" data-bs-toggle="modal"
+                                    data-bs-target="#bookRoomModal" data-room='<%= JSON.stringify(room) %>'
+                                    data-user='<%= JSON.stringify(user) %>'>book</button>
+                                </td>
+                              </tr>
+                              <% }); %>
+
+                          </tbody>
+                        </table>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-10">Available Rooms</div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <form action="" class="row me-5 ms-5 mb-1 mt-5 justify-content-between">
-              <div class="col-md-4">
-                <select id="hostelId" name="hostelId" class="form-select" required>
-                  <option value="">Select Hostel</option>
-                  <% hostels.forEach(hostel=> { %>
-                    <option value="<%= hostel._id %>">
-                      <%= hostel.hostelName %>
-                    </option>
-                    <% }); %>
-                </select>
-
-              </div>
-              <div class="col-md-4">
-                <select class="form-select" id="exampleSelect">
-                  <option value="1">Room</option>
-                  <option value="2">Single</option>
-                  <option value="2">Studio</option>
-
-                </select>
-              </div>
-              <div class="col-md-2">
-                <button type="button" class="btn primary-button">Search</button>
-              </div>
-            </form>
-
-            <div class="row me-5 ms-5">
-              <div class="col-sm-12">
-                <div class="card card-standard-height">
-                  <div class="card-header d-flex justify-content-between">
-                    <span>Rooms</span>
-                    <span><i class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addRoomModal"></i></span>
-                  </div>
-                  <div class="card-body">
-                    <table class="table">
-                      <thead>
-                        <tr>
-                          <th scope="col">S.No</th>
-                          <th scope="col">Room No.</th>
-                          <th scope="col">Category</th>
-                          <th scope="col">Hostel</th>
-                          <th scope="col">Floor</th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Actions</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <% rooms.forEach((room, index)=> { %>
-                          <tr>
-                            <th scope="row">
-                              <%= index + 1 %>
-                            </th>
-                            <td>
-                              <%= room.roomNumber %>
-                            </td>
-                            <td>
-                              <%= room.type %>
-                            </td>
-                            <td>
-                              <%= room.hostelId.hostelName %>
-                            </td>
-                            <td>
-                              <%= room.floor %>
-                            </td>
-                            <td>$ <%= room.price %>
-                            </td>
-                            <td>
-                              <button type="button" class="btn adaptive-button" class="me-3" data-bs-toggle="modal"
-                                data-bs-target="#bookRoomModal" data-room='<%= JSON.stringify(room) %>'>book</button>
-                            </td>
-                          </tr>
-                          <% }); %>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -180,30 +186,9 @@
 
 
 
-            <form>
-              <div class="mb-3">
-                <label for="cardNumber" class="form-label">Card Number</label>
-                <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
-              </div>
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="expirationDate" class="form-label">Expiration Date (MM/YY)</label>
-                    <input type="text" class="form-control" id="expirationDate" name="expirationDate"
-                      placeholder="MM/YY" required>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <div class="mb-3">
-                    <label for="cvv" class="form-label">CVV</label>
-                    <input type="text" class="form-control" id="cvv" name="cvv" required>
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="cardHolderName" class="form-label">Card Holder Name</label>
-                <input type="text" class="form-control" id="cardHolderName" name="cardHolderName" required>
-              </div>
+            <form action="booking/book-room" method="POST">
+              <input type="hidden" name="roomId" id="bookRoomId">
+              <input type="hidden" name="userId" id="bookUserId">
               <button type="submit" class="btn btn-primary">Submit Payment</button>
             </form>
 
@@ -217,6 +202,9 @@
         const button = event.relatedTarget;
         // Extract room info from data-room attribute
         const room = JSON.parse(button.getAttribute('data-room'));
+        // Extract room info from data-user attribute
+        const user = JSON.parse(button.getAttribute('data-user'));
+
         // Update the modal's content.
         const modalTitle = bookRoomModal.querySelector('.modal-title');
         const roomNumber = bookRoomModal.querySelector('.roomNumber');
@@ -226,28 +214,19 @@
         const roomPrice = bookRoomModal.querySelector('.roomPrice');
 
 
-        // const roomIdField = document.getElementById('editRoomId');
-        // const hostelIdField = document.getElementById('editHostelId');
-        // const roomNumberField = document.getElementById('editRoomNumber');
-        // const floorField = document.getElementById('editFloor');
-        // const categoryField = document.getElementById('editCategory');
-        // const priceField = document.getElementById('editPrice');
+        const roomId = document.getElementById('bookRoomId');
+        const userId = document.getElementById('bookUserId');
 
-        modalTitle.textContent = 'Book Room: ' + room.roomNumber;
+
+        userId.value = user._id;
+        roomId.value = room._id;
+        modalTitle.textContent = 'Book Room: ' + room._id;
         roomNumber.textContent = room.roomNumber;
         roomType.textContent = room.type;
         hostelName.textContent = room.hostelId.hostelName;
         floorNumber.textContent = room.floor;
         roomPrice.textContent = "$" + room.price;
 
-
-        // editRoomForm.action = '/rooms/update/' + room._id;
-        // roomIdField.value = room._id;
-        // hostelIdField.value = room.hostelId;
-        // roomNumberField.value = room.roomNumber;
-        // floorField.value = room.floor;
-        // categoryField.value = room.type;
-        // priceField.value = room.price;
       });
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

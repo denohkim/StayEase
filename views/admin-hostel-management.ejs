@@ -25,124 +25,142 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <div class="container">
-                        <div class="row me-5 ms-5 mb-5 mt-5">
-                            <div class="col-sm-4">
-                                <div class="card tile">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col-md-8 card-number">
-                                                <%= numHostels %>
+                    <div class="container mt-5">
+                        <% if (messages.error_msg) { %>
+                            <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                                <%= messages.error_msg %>
+                                    <button type="button" class="alert-close" data-bs-dismiss="alert">&times;</button>
+                            </div>
+                            <% } %>
+                                <% if (messages.success_msg) { %>
+                                    <div class="alert alert-success alert-dismissible fade show custom-alert"
+                                        role="alert">
+                                        <%= messages.success_msg %>
+                                            <button type="button" class="alert-close"
+                                                data-bs-dismiss="alert">&times;</button>
+                                    </div>
+                                    <% } %>
+                                        <div class="row me-5 ms-5 mb-5">
+                                            <div class="col-sm-4">
+                                                <div class="card tile">
+                                                    <div class="card-body">
+                                                        <div class="row mb-2">
+                                                            <div class="col-md-8 card-number">
+                                                                <%= numHostels %>
+                                                            </div>
+                                                            <div class="col-md-4 card-icon">
+                                                                <i class="far fa-building card-icon"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-10">Number of Hostels</div>
+                                                            <div class="col-md-2">
+                                                                <i class="fas fa-plus primary-color"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#addHostelModal"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 card-icon">
-                                                <i class="far fa-building card-icon"></i>
+                                            <div class="col-sm-4">
+                                                <div class="card tile">
+                                                    <div class="card-body">
+                                                        <div class="row mb-2">
+                                                            <div class="col-md-8 card-number">
+                                                                <%= numRooms %>
+                                                            </div>
+                                                            <div class="col-md-4 card-icon">
+                                                                <i class="fas fa-bed card-icon"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-10">Number of Rooms</div>
+                                                            <div class="col-md-2">
+                                                                <i class="fas fa-plus primary-color"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#addRoomModal"></i>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-10">Number of Hostels</div>
+                                        <form action="" class="row me-5 ms-5 mb-1 mt-5 justify-content-between">
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="exampleSelect">
+                                                    <option value="1">Select Hostel</option>
+                                                    <option value="2">Hostel A</option>
+                                                </select>
+                                            </div>
                                             <div class="col-md-2">
-                                                <i class="fas fa-plus primary-color" data-bs-toggle="modal"
-                                                    data-bs-target="#addHostelModal"></i>
+                                                <button type="button" class="btn primary-button">Search</button>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="card tile">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col-md-8 card-number">
-                                                <%= numRooms %>
-                                            </div>
-                                            <div class="col-md-4 card-icon">
-                                                <i class="fas fa-bed card-icon"></i>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-10">Number of Rooms</div>
-                                            <div class="col-md-2">
-                                                <i class="fas fa-plus primary-color" data-bs-toggle="modal"
-                                                    data-bs-target="#addRoomModal"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <form action="" class="row me-5 ms-5 mb-1 mt-5 justify-content-between">
-                            <div class="col-md-4">
-                                <select class="form-select" id="exampleSelect">
-                                    <option value="1">Select Hostel</option>
-                                    <option value="2">Hostel A</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn primary-button">Search</button>
-                            </div>
-                        </form>
+                                        </form>
 
-                        <div class="row me-5 ms-5">
-                            <div class="col-sm-12">
-                                <div class="card card-standard-height">
-                                    <div class="card-header d-flex justify-content-between">
-                                        <span>Rooms</span>
-                                        <span><i class="fas fa-plus" data-bs-toggle="modal"
-                                                data-bs-target="#addRoomModal"></i></span>
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Room No.</th>
-                                                    <th scope="col">Category</th>
-                                                    <th scope="col">Hostel</th>
-                                                    <th scope="col">Floor</th>
-                                                    <th scope="col">Price</th>
-                                                    <th scope="col">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <% rooms.forEach((room, index)=> { %>
-                                                    <tr>
-                                                        <th scope="row">
-                                                            <%= index + 1 %>
-                                                        </th>
-                                                        <td>
-                                                            <%= room.roomNumber %>
-                                                        </td>
-                                                        <td>
-                                                            <%= room.type %>
-                                                        </td>
-                                                        <td>
-                                                            <%= room.hostelId.hostelName %>
-                                                        </td>
-                                                        <td>
-                                                            <%= room.floor %>
-                                                        </td>
-                                                        <td>$ <%= room.price %>
-                                                        </td>
-                                                        <td>
-                                                            <a href="#" class="me-3" data-bs-toggle="modal"
-                                                                data-bs-target="#editRoomModal"
-                                                                data-room='<%= JSON.stringify(room) %>'>
-                                                                <i class="fas fa-pencil-alt primary-color"></i>
-                                                            </a>
-                                                            <a href="/rooms/delete/<%= room._id %>"
-                                                                onclick="return confirm('Are you sure you want to delete this room?');"><i
-                                                                    class="fas fa-trash-alt text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                    <% }); %>
+                                        <div class="row me-5 ms-5">
+                                            <div class="col-sm-12">
+                                                <div class="card card-standard-height">
+                                                    <div class="card-header d-flex justify-content-between">
+                                                        <span>Rooms</span>
+                                                        <span><i class="fas fa-plus" data-bs-toggle="modal"
+                                                                data-bs-target="#addRoomModal"></i></span>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">S.No</th>
+                                                                    <th scope="col">Room No.</th>
+                                                                    <th scope="col">Category</th>
+                                                                    <th scope="col">Hostel</th>
+                                                                    <th scope="col">Floor</th>
+                                                                    <th scope="col">Price</th>
+                                                                    <th scope="col">Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <% rooms.forEach((room, index)=> { %>
+                                                                    <tr>
+                                                                        <th scope="row">
+                                                                            <%= index + 1 %>
+                                                                        </th>
+                                                                        <td>
+                                                                            <%= room.roomNumber %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= room.type %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= room.hostelId.hostelName %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <%= room.floor %>
+                                                                        </td>
+                                                                        <td>$ <%= room.price %>
+                                                                        </td>
+                                                                        <td>
+                                                                            <a href="#" class="me-3"
+                                                                                data-bs-toggle="modal"
+                                                                                data-bs-target="#editRoomModal"
+                                                                                data-room='<%= JSON.stringify(room) %>'>
+                                                                                <i
+                                                                                    class="fas fa-pencil-alt primary-color"></i>
+                                                                            </a>
+                                                                            <a href="/rooms/delete/<%= room._id %>"
+                                                                                onclick="return confirm('Are you sure you want to delete this room?');"><i
+                                                                                    class="fas fa-trash-alt text-danger"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <% }); %>
 
-                                                        <!-- Add more rows as needed -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                                                        <!-- Add more rows as needed -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                     </div>
                 </div>
             </div>

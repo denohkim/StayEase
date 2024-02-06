@@ -25,84 +25,101 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <div class="container">
-                        <div class="row me-5 ms-5 mb-5 mt-5">
-                            <div class="col-sm-4">
-                                <div class="card tile">
-                                    <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col-md-8 card-number">78</div>
-                                            <div class="col-md-4 card-icon">
-                                                <i class="fas fa-user-graduate card-icon"></i>
+                    <div class="container mt-5">
+                        <% if (messages.error_msg) { %>
+                            <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                                <%= messages.error_msg %>
+                                    <button type="button" class="alert-close" data-bs-dismiss="alert">&times;</button>
+                            </div>
+                            <% } %>
+                                <% if (messages.success_msg) { %>
+                                    <div class="alert alert-success alert-dismissible fade show custom-alert"
+                                        role="alert">
+                                        <%= messages.success_msg %>
+                                            <button type="button" class="alert-close"
+                                                data-bs-dismiss="alert">&times;</button>
+                                    </div>
+                                    <% } %>
+                                        <div class="row me-5 ms-5 mb-5">
+                                            <div class="col-sm-4">
+                                                <div class="card tile">
+                                                    <div class="card-body">
+                                                        <div class="row mb-2">
+                                                            <div class="col-md-8 card-number">
+                                                                <%= numStudents %>
+                                                            </div>
+                                                            <div class="col-md-4 card-icon">
+                                                                <i class="fas fa-user-graduate card-icon"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-10">Number of Students</div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <form action="" class="row me-5 ms-5 mb-1 mt-5 justify-content-between">
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="exampleSelect">
+                                                    <option value="1">Status</option>
+                                                    <option value="2">Booked</option>
+                                                    <option value="3">Not Booked</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <select class="form-select" id="exampleSelect">
+                                                    <option value="1">Hostel</option>
+                                                    <option value="2">Hostel A</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <button type="button" class="btn primary-button">Filter</button>
+                                            </div>
+                                        </form>
+
+                                        <div class="row me-5 ms-5">
+                                            <div class="col-sm-12">
+                                                <div class="card card-standard-height">
+                                                    <div class="card-header d-flex justify-content-between">
+                                                        Students
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th scope="col">S.No</th>
+                                                                    <th scope="col">Reg No.</th>
+                                                                    <th scope="col">Name</th>
+                                                                    <th scope="col">Room</th>
+                                                                    <th scope="col">Status</th>
+                                                                    <th scope="col">Actions</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">1</th>
+                                                                    <td>S2332101</td>
+                                                                    <td>Erick</td>
+                                                                    <td>B0103</td>
+                                                                    <td>Booked</td>
+                                                                    <td>
+                                                                        <span class="me-3"><i
+                                                                                class="fas fa-pencil-alt primary-color"></i></span>
+                                                                        <span><i
+                                                                                class="fas fa-trash-alt text-danger"></i></span>
+                                                                    </td>
+                                                                </tr>
+                                                                <!-- Add more rows as needed -->
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-10">Number of Students</div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <form action="" class="row me-5 ms-5 mb-1 mt-5 justify-content-between">
-                            <div class="col-md-4">
-                                <select class="form-select" id="exampleSelect">
-                                    <option value="1">Status</option>
-                                    <option value="2">Booked</option>
-                                    <option value="3">Not Booked</option>
-                                </select>
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select" id="exampleSelect">
-                                    <option value="1">Hostel</option>
-                                    <option value="2">Hostel A</option>
-
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="button" class="btn primary-button">Filter</button>
-                            </div>
-                        </form>
-
-                        <div class="row me-5 ms-5">
-                            <div class="col-sm-12">
-                                <div class="card card-standard-height">
-                                    <div class="card-header d-flex justify-content-between">
-                                        Students
-                                    </div>
-                                    <div class="card-body">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">S.No</th>
-                                                    <th scope="col">Reg No.</th>
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Room</th>
-                                                    <th scope="col">Status</th>
-                                                    <th scope="col">Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <th scope="row">1</th>
-                                                    <td>S2332101</td>
-                                                    <td>Erick</td>
-                                                    <td>B0103</td>
-                                                    <td>Booked</td>
-                                                    <td>
-                                                        <span class="me-3"><i
-                                                                class="fas fa-pencil-alt primary-color"></i></span>
-                                                        <span><i class="fas fa-trash-alt text-danger"></i></span>
-                                                    </td>
-                                                </tr>
-                                                <!-- Add more rows as needed -->
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

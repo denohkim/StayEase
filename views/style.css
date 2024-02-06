@@ -248,3 +248,21 @@ a {
 .primary-color {
   color: #1abc9c;
 }
+
+.alert {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 340px;
+  margin: 0 auto 15px;
+}
+.alert-close {
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  color: inherit;
+}

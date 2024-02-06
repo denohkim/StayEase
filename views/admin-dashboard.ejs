@@ -25,136 +25,150 @@
         </div>
 
         <div class="col-sm-9">
-          <div class="container">
-            <div class="row me-5 ms-5 mb-5 mt-5">
-              <div class="col">
-                <div class="card tile">
-                  <div class="card-body">
-                    <table>
-                      <tr>
-                        <td>
-                          <p style="font-size: 48px; color: #1abc9c">
-                            <%= numStudents %>
-                          </p>
-                        </td>
-                        <td style="text-align: right">
-                          <i class="fas fa-user-graduate" style="font-size: 48px; color: #1abc9c"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p>Number of Students</p>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
+          <div class="container mt-5">
+            <% if (messages.error_msg) { %>
+              <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                <%= messages.error_msg %>
+                  <button type="button" class="alert-close" data-bs-dismiss="alert">&times;</button>
               </div>
-              <div class="col">
-                <div class="card tile">
-                  <div class="card-body">
-                    <table>
-                      <tr>
-                        <td>
-                          <p style="font-size: 48px; color: #1abc9c">
-                            <%=numBookedRooms%>
-                          </p>
-                        </td>
-                        <td style="text-align: right">
-                          <i class="fas fa-bed" style="font-size: 48px; color: #1abc9c"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p class="me-4">Booked Rooms</p>
-                        </td>
-                      </tr>
-                    </table>
+              <% } %>
+                <% if (messages.success_msg) { %>
+                  <div class="alert alert-success alert-dismissible fade show custom-alert" role="alert">
+                    <%= messages.success_msg %>
+                      <button type="button" class="alert-close" data-bs-dismiss="alert">&times;</button>
                   </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="card tile">
-                  <div class="card-body">
-                    <table>
-                      <tr>
-                        <td>
-                          <p style="font-size: 48px; color: #1abc9c">
-                            <%=numRooms%>
-                          </p>
-                        </td>
-                        <td style="text-align: right">
-                          <i class="fas fa-user-graduate" style="font-size: 48px; color: #1abc9c"></i>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <p>Total Rooms</p>
-                        </td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row me-5 ms-5">
-              <div class="col-sm-8">
-                <div class="card card-standard-height">
-                  <div class="card-header d-flex justify-content-between"><span>Notice Board</span> <span><i
-                        class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addNoticeModal"></i></span></div>
-                  <div class="card-body">
-                    <ol>
-                      <li class="mb-2">
-                        Room Allocation for Semester 2, 2024:Dear Students, the
-                        room allocation for the upcoming semester has been
-                        completed... more
-                      </li>
-                      <li class="mb-2">
-                        Maintenance Schedule - January 2024::Dear Students, the
-                        room allocation for the upcoming semester has been
-                        completed... more
-                      </li>
-                      <li class="mb-2">
-                        Upcoming Check-In Dates:Dear Students, the room
-                        allocation for the upcoming semester has been
-                        completed... more
-                      </li>
-                      <li class="mb-2">
-                        Room Allocation for Semester 2, 2024:Dear Students, the
-                        room allocation for the upcoming semester has been
-                        completed... more
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-4">
-                <div class="card card-standard-height">
-                  <div class="card-header d-flex justify-content-between"><span>Events</span> <span><i
-                        class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addEventModal"></i></span></div>
-                  <div class="card-body">
-                    <ol>
-                      <li class="mb-2">
-                        Upcoming Check-In Dates:
-                        <div class="date">31 January 2024</div>
-                      </li>
-                      <li class="mb-2">
-                        Maintenance Schedule:
-                        <div class="date">31 January 2024</div>
-                      </li>
-                      <li class="mb-2">
-                        Games and hangout:
-                        <div class="date">31 January 2024</div>
-                      </li>
-                      <li class="mb-2">
-                        Safety Training:
-                        <div class="date">31 January 2024</div>
-                      </li>
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  <% } %>
+                    <div class="row me-5 ms-5 mb-5">
+                      <div class="col">
+                        <div class="card tile">
+                          <div class="card-body">
+                            <table>
+                              <tr>
+                                <td>
+                                  <p style="font-size: 48px; color: #1abc9c">
+                                    <%= numStudents %>
+                                  </p>
+                                </td>
+                                <td style="text-align: right">
+                                  <i class="fas fa-user-graduate" style="font-size: 48px; color: #1abc9c"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p>Number of Students</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card tile">
+                          <div class="card-body">
+                            <table>
+                              <tr>
+                                <td>
+                                  <p style="font-size: 48px; color: #1abc9c">
+                                    <%=numBookedRooms%>
+                                  </p>
+                                </td>
+                                <td style="text-align: right">
+                                  <i class="fas fa-bed" style="font-size: 48px; color: #1abc9c"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p class="me-4">Booked Rooms</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="card tile">
+                          <div class="card-body">
+                            <table>
+                              <tr>
+                                <td>
+                                  <p style="font-size: 48px; color: #1abc9c">
+                                    <%=numRooms%>
+                                  </p>
+                                </td>
+                                <td style="text-align: right">
+                                  <i class="fas fa-user-graduate" style="font-size: 48px; color: #1abc9c"></i>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <p>Total Rooms</p>
+                                </td>
+                              </tr>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row me-5 ms-5">
+                      <div class="col-sm-8">
+                        <div class="card card-standard-height">
+                          <div class="card-header d-flex justify-content-between"><span>Notice Board</span> <span><i
+                                class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addNoticeModal"></i></span>
+                          </div>
+                          <div class="card-body">
+                            <ol>
+                              <li class="mb-2">
+                                Room Allocation for Semester 2, 2024:Dear Students, the
+                                room allocation for the upcoming semester has been
+                                completed... more
+                              </li>
+                              <li class="mb-2">
+                                Maintenance Schedule - January 2024::Dear Students, the
+                                room allocation for the upcoming semester has been
+                                completed... more
+                              </li>
+                              <li class="mb-2">
+                                Upcoming Check-In Dates:Dear Students, the room
+                                allocation for the upcoming semester has been
+                                completed... more
+                              </li>
+                              <li class="mb-2">
+                                Room Allocation for Semester 2, 2024:Dear Students, the
+                                room allocation for the upcoming semester has been
+                                completed... more
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="card card-standard-height">
+                          <div class="card-header d-flex justify-content-between"><span>Events</span> <span><i
+                                class="fas fa-plus" data-bs-toggle="modal" data-bs-target="#addEventModal"></i></span>
+                          </div>
+                          <div class="card-body">
+                            <ol>
+                              <li class="mb-2">
+                                Upcoming Check-In Dates:
+                                <div class="date">31 January 2024</div>
+                              </li>
+                              <li class="mb-2">
+                                Maintenance Schedule:
+                                <div class="date">31 January 2024</div>
+                              </li>
+                              <li class="mb-2">
+                                Games and hangout:
+                                <div class="date">31 January 2024</div>
+                              </li>
+                              <li class="mb-2">
+                                Safety Training:
+                                <div class="date">31 January 2024</div>
+                              </li>
+                            </ol>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
           </div>
         </div>
       </div>

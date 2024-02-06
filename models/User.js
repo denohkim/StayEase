@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
     lname:{type: String, required: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    role: { type: String, default: 'student' }, // 'admin' for administrative users
+    role: { type: String, enum: ['student', 'admin'], default: 'student'  }, // 'admin' for administrative users
     hasBooked: { type: Boolean, default: false }
 });
 

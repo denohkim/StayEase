@@ -198,7 +198,7 @@
             <form action="booking/book-room" method="POST">
               <input type="hidden" name="roomId" id="bookRoomId">
               <input type="hidden" name="userId" id="bookUserId">
-              <button type="submit" class="btn btn-primary">Submit Payment</button>
+              <button type="submit" class="btn btn-primary adaptive-button">Proceed to Payment</button>
             </form>
 
           </div>
@@ -229,7 +229,7 @@
 
         userId.value = user._id;
         roomId.value = room._id;
-        modalTitle.textContent = 'Book Room: ' + room._id;
+        modalTitle.textContent = 'Book Room: ' + room.roomNumber;
         roomNumber.textContent = room.roomNumber;
         roomType.textContent = room.type;
         hostelName.textContent = room.hostelId.hostelName;

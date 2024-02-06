@@ -14,7 +14,7 @@ exports.handleBookingSubmission = async (req, res) => {
         const user = await User.findById(userId);
         
         if (!user.hasBooked) {
-            if (!room.isAvailable){
+            if (room.isAvailable){
                 const session = await stripe.checkout.sessions.create({
                     payment_method_types: ['card'],
                     line_items: [

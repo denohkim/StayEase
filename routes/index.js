@@ -42,20 +42,36 @@ router.get("/book-room", ensureAuthenticated, async (req, res) => {
 });
 
 router.get("/myroom", ensureAuthenticated, async (req, res) => {
-    const myRooms = await Room.find({bookedBy: req.user.id}).populate("hostelId", "hostelName").lean();
+  try {
+    const myRooms = await Room.find({ bookedBy: req.user.id }).populate("hostelId", "hostelName").lean();
     res.render("student-room", {
       user: req.user, // Pass the user object to the dashboard for personalized greeting
-      myRooms
+      myRoom:myRooms[0]
     });
-  });
+  } catch (error) {
+    res.render("student-room", {
+      user: req.user,
+      errorMessage: "You have no room booked." // Display error message
+    });
+  }
+});
 
-  router.get("/myprofile", ensureAuthenticated, async (req, res) => {
-    const myRooms = await Room.find({bookedBy: req.user.id}).populate("hostelId", "hostelName").lean();
+router.get("/myprofile", ensureAuthenticated, async (req, res) => {
+  try {
+    const myRooms = await Room.find({ bookedBy: req.user.id }).populate("hostelId", "hostelName").lean();
     res.render("student-profile", {
       user: req.user, // Pass the user object to the dashboard for personalized greeting
-      myRooms
+      myRoom:myRooms[0]
     });
-  });
+  } catch (error) {
+    res.render("student-profile", {
+      user: req.user,
+      errorMessage: "You have no room booked." // Display error message
+    });
+  }
+});
+
+
 
 // Administrator Dashboard
 router.get("/admin-dashboard", ensureAdmin, async (req, res) =>{
@@ -90,9 +106,11 @@ router.post("/add-room", ensureAdmin, dashboardController.addRoom);
 
 router.get("/admin-user-management", ensureAdmin, async (req, res) =>{
     const numStudents = await User.countDocuments({role: 'student'});
+    const students = await User.find({role: 'student'});
     res.render("admin-user-management", {
         user: req.user,
-        numStudents
+        numStudents,
+        students
       })
 });
 

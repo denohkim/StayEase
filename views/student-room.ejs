@@ -43,53 +43,52 @@
                 </div>
 
                 <div class="col-sm-9">
-                    <div class="container">
-                        <% if (messages.error_msg) { %>
-                            <div class="alert alert-danger">
-                                <%= messages.error_msg %>
-                            </div>
-                            <% } %>
-                                <div class="row me-5 ms-5 mb-5">
-                                    <h1 class="mt-5 mb-4">Room Information</h1>
+                    <div class="container mt-5">
+                        <% if (myRoom) { %>
+                            <div class="row me-5 ms-5 mb-5">
+                                <h1 class="mt-5 mb-4">Room Information</h1>
 
-                                    <div class="col-md-6">
-                                        <div class="card room-card">
-                                            <div class="card-body">
-                                                <h5 class="card-title">Room <%= myRooms[0].roomNumber %>
-                                                </h5>
-                                                <div class="row">
-                                                    <div class="col-md-6 fs-6 ">Room Type:</div>
-                                                    <div class="col-md-4 fs-6 card-text">
-                                                        <%= myRooms[0].type %>
-                                                    </div>
+                                <div class="col-md-6">
+                                    <div class="card room-card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Room <%= myRoom.roomNumber %>
+                                            </h5>
+                                            <div class="row">
+                                                <div class="col-md-6 fs-6">Room Type:</div>
+                                                <div class="col-md-4 fs-6 card-text">
+                                                    <%= myRoom.type %>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-6 fs-6 ">Hostel:</div>
-                                                    <div class="col-md-4 fs-6 card-text">
-                                                        <%= myRooms[0].hostelId.hostelName %>
-                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 fs-6">Hostel:</div>
+                                                <div class="col-md-4 fs-6 card-text">
+                                                    <%= myRoom.hostelId.hostelName %>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-md-6 fs-6 ">Floor No.:</div>
-                                                    <div class="col-md-4 fs-6 card-text">
-                                                        <%= myRooms[0].floor %>
-                                                    </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 fs-6">Floor No.:</div>
+                                                <div class="col-md-4 fs-6 card-text">
+                                                    <%= myRoom.floor %>
                                                 </div>
-
-                                                <div class="row">
-                                                    <div class="col-md-6 fs-6 ">Amount Paid:</div>
-                                                    <div class="col-md-4 fs-6 card-text">
-                                                        $<%= myRooms[0].price %>.00
-                                                    </div>
-                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6 fs-6">Amount Paid:</div>
+                                                <div class="col-md-4 fs-6 card-text">$<%= myRoom.price %>.00</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-
+                            </div>
+                            <% } else { %>
+                                <div class="alert alert-danger alert-dismissible fade show custom-alert" role="alert">
+                                    You have no room booked.
+                                    <button type="button" class="alert-close" data-bs-dismiss="alert">&times;</button>
+                                </div>
+                                <% } %>
                     </div>
                 </div>
             </div>
         </div>
 </body>
+
+</html>

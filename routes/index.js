@@ -60,7 +60,7 @@ router.get("/myroom", ensureAuthenticated, async (req, res) => {
 // Administrator Dashboard
 router.get("/admin-dashboard", ensureAdmin, async (req, res) =>{
     const numStudents = await User.countDocuments({role: 'student'});
-    const numRooms = await Room.countDocuments({isAvailable: 'false'});
+    const numRooms = await Room.countDocuments({});
     const numBookedRooms = await Room.countDocuments({isAvailable: 'false'});
     res.render("admin-dashboard", {
         user: req.user,

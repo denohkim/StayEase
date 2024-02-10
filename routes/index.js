@@ -18,7 +18,7 @@ router.get("/student-dashboard", ensureAuthenticated, async (req, res) => {
     const myRooms = await Room.find({bookedBy: req.user.id}).populate("hostelId", "hostelName").lean();
     const numMyRooms = await Room.countDocuments({bookedBy: req.user.id});
     res.render("student-dashboard", {
-      user: req.user, // Pass the user object to the dashboard for personalized greeting
+      user: req.user, 
       numHostels,
       numRooms,
       hostels,
@@ -33,7 +33,7 @@ router.get("/book-room", ensureAuthenticated, async (req, res) => {
   const hostels = await Hostel.find({});
   const rooms = await Room.find({isAvailable: 'true'}).populate("hostelId", "hostelName").lean();
   res.render("student-book-room", {
-    user: req.user, // Pass the user object to the dashboard for personalized greeting
+    user: req.user, 
     numHostels,
     numRooms,
     hostels,
@@ -45,13 +45,13 @@ router.get("/myroom", ensureAuthenticated, async (req, res) => {
   try {
     const myRooms = await Room.find({ bookedBy: req.user.id }).populate("hostelId", "hostelName").lean();
     res.render("student-room", {
-      user: req.user, // Pass the user object to the dashboard for personalized greeting
+      user: req.user, 
       myRoom:myRooms[0]
     });
   } catch (error) {
     res.render("student-room", {
       user: req.user,
-      errorMessage: "You have no room booked." // Display error message
+      errorMessage: "You have no room booked." 
     });
   }
 });
@@ -60,13 +60,13 @@ router.get("/myprofile", ensureAuthenticated, async (req, res) => {
   try {
     const myRooms = await Room.find({ bookedBy: req.user.id }).populate("hostelId", "hostelName").lean();
     res.render("student-profile", {
-      user: req.user, // Pass the user object to the dashboard for personalized greeting
+      user: req.user, 
       myRoom:myRooms[0]
     });
   } catch (error) {
     res.render("student-profile", {
       user: req.user,
-      errorMessage: "You have no room booked." // Display error message
+      errorMessage: "You have no room booked." 
     });
   }
 });
@@ -93,7 +93,7 @@ router.get("/admin-hostel-management", ensureAdmin, async (req, res) => {
   const hostels = await Hostel.find({});
   const rooms = await Room.find({}).populate("hostelId", "hostelName").lean();
   res.render("admin-hostel-management", {
-    user: req.user, // Pass the user object to the dashboard for personalized greeting
+    user: req.user, 
     numHostels,
     numRooms,
     hostels,

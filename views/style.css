@@ -201,15 +201,15 @@ a {
 }
 
 .card {
-  border: 1px solid #1abc9c; /* Add your desired border styles */
-  border-radius: 0px; /* Add your desired border radius */
-  overflow: hidden; /* Ensure content doesn't overflow */
+  border: 1px solid #1abc9c;
+  border-radius: 0px; 
+  overflow: hidden; 
 }
 
 .modal {
-  border: 1px solid #1abc9c; /* Add your desired border styles */
-  border-radius: 0px; /* Add your desired border radius */
-  overflow: hidden; /* Ensure content doesn't overflow */
+  border: 1px solid #1abc9c; 
+  border-radius: 0px; 
+  overflow: hidden; 
 }
 
 .tile {
@@ -218,18 +218,18 @@ a {
 }
 
 .card-body {
-  padding: 10px; /* Add your desired padding */
+  padding: 10px; 
 }
 
 .card-title {
-  font-size: 1.2rem; /* Add your desired font size */
-  margin-bottom: 0.5rem; /* Add your desired margin bottom */
+  font-size: 1.2rem; 
+  margin-bottom: 0.5rem; 
 }
 
 .card-text {
-  font-size: 1rem; /* Add your desired font size */
-  color: #6c757d; /* Add your desired text color */
-  margin-bottom: 0; /* Remove default margin bottom */
+  font-size: 1rem; 
+  color: #6c757d; 
+  margin-bottom: 0; 
 }
 .card-number{
   font-size: 48px; 

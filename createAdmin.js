@@ -1,5 +1,4 @@
-// createAdmin.js
-
+// Script to create admin user
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const User = require('./models/User');
@@ -7,7 +6,6 @@ const db = require('./config/database').mongoURI;
 // Connect to MongoDB
 mongoose.connect(db);
 
-// Pre-create admin user
 const preCreateAdmin = async () => {
   try {
     const hashedPassword = await bcrypt.hash('Admin@2024', 10);
